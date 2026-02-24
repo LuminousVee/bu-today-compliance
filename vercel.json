@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    { "source": "/privacy-policy", "destination": "/public/privacy-policy/index.html" },
+    { "source": "/privacy-policy/", "destination": "/public/privacy-policy/index.html" },
+    { "source": "/popia-compliance", "destination": "/public/popia-compliance/index.html" },
+    { "source": "/popia-compliance/", "destination": "/public/popia-compliance/index.html" },
+    { "source": "/hipaa-compliance", "destination": "/public/hipaa-compliance/index.html" },
+    { "source": "/hipaa-compliance/", "destination": "/public/hipaa-compliance/index.html" },
+    { "source": "/hippa-compliance", "destination": "/public/hipaa-compliance/index.html" },
+    { "source": "/hippa-compliance/", "destination": "/public/hipaa-compliance/index.html" }
+  ]
+}
