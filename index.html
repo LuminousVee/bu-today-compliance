@@ -1,114 +1,684 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="robots" content="noindex">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BU Today Agency – WhatsApp Compliance</title>
-  <meta name="description" content="BU Today Agency provides managed inbox support and customer communication services. WhatsApp usage and privacy details." />
-  <style>
-    :root{
-      --bu-purple:#2B1B5A;
-      --bu-gold:#E3A11A;
-      --cream:#FAF7F2;
-      --text:#1F1F1F;
-      --muted:#6B6B6B;
-      --border:#E5E1DA;
-      --card:#ffffff;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: var(--cream);
-      color: var(--text);
-      line-height:1.5;
-    }
-    a{color:inherit}
-    .wrap{max-width:980px; margin:0 auto; padding:28px 18px 44px}
-    .top{
-      display:flex; justify-content:space-between; gap:14px;
-      padding:14px 16px; border:1px solid var(--border); border-radius:18px;
-      background: rgba(255,255,255,.7);
-    }
-    h1{font-size:18px; margin:0; color:var(--bu-purple)}
-    h2{font-size:28px; margin:16px 0 8px; color:var(--bu-purple)}
-    h3{font-size:16px; margin:0 0 6px; color:var(--bu-purple)}
-    p{margin:0; color:var(--muted)}
-    .card{
-      border:1px solid var(--border);
-      background: var(--card);
-      border-radius:18px;
-      padding:18px;
-      margin-top:14px;
-    }
-    ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
-    li{margin:6px 0}
-    .cta{
-      display:flex; gap:10px; margin-top:14px; flex-wrap:wrap;
-    }
-    .btn{
-      padding:10px 12px; border-radius:12px;
-      border:1px solid var(--border);
-      background:#fff; font-weight:600; font-size:13px;
-      text-decoration:none;
-    }
-    .btn.primary{background:var(--bu-purple); color:#fff}
-    footer{
-      margin-top:20px; padding-top:12px;
-      border-top:1px solid var(--border);
-      font-size:12px; color:var(--muted);
-      display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BU Today Agency – Messaging Compliance</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F1E3;
+    --surface: #FFFFFF;
+    --border: #E3D5AF;
+    --text: #1B1B1B;
+    --muted: #5E5175;
+    --accent: #3B1B5A;
+    --accent-dark: #2D1544;
+    --brand-gold: #C9A227;
+    --wa: #25D366;
+    --wa-dark: #128C7E;
+    --meta: #0866FF;
+    --meta-dark: #0553CC;
+    --ig: #E1306C;
+    --ig-dark: #C13584;
+    --tag-bg: #F3EEDC;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Sora', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    background: linear-gradient(140deg, var(--accent) 0%, var(--accent-dark) 100%);
+    border-bottom: 3px solid var(--brand-gold);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.015) 20px,
+      rgba(255,255,255,0.015) 21px
+    );
+  }
+
+  .header-inner { position: relative; z-index: 1; }
+
+  .agency-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 1rem;
+  }
+
+  header h1 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  header h1 span { color: var(--brand-gold); font-weight: 300; }
+
+  .header-sub {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .platform-pills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border: 1px solid transparent;
+  }
+
+  .pill-wa  { background: rgba(37,211,102,0.15); color: var(--wa); border-color: rgba(37,211,102,0.25); }
+  .pill-meta{ background: rgba(8,102,255,0.15); color: #5b9fff; border-color: rgba(8,102,255,0.25); }
+  .pill-ig  { background: rgba(225,48,108,0.15); color: #f06292; border-color: rgba(225,48,108,0.25); }
+
+  .pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* ── Nav bar ── */
+  .nav-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-bar a {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 1rem 1.2rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-bar a:hover { color: var(--accent); }
+  .nav-bar a.wa:hover   { color: var(--wa-dark); border-bottom-color: var(--wa); }
+  .nav-bar a.meta:hover { color: var(--meta-dark); border-bottom-color: var(--meta); }
+  .nav-bar a.ig:hover   { color: var(--ig-dark); border-bottom-color: var(--ig); }
+  .nav-bar a svg { width: 13px; height: 13px; }
+
+  /* ── Main ── */
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ── About card ── */
+  .about-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .about-card h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+  }
+
+  .about-card p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  .what-we-do {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .do-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.84rem;
+    color: var(--muted);
+    padding: 0.5rem 0;
+  }
+
+  .do-item::before {
+    content: '↗';
+    color: var(--text);
+    font-size: 0.75rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── Platform sections ── */
+  .platform-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .platform-section:nth-child(2) { animation-delay: 0.05s; }
+  .platform-section:nth-child(3) { animation-delay: 0.1s; }
+  .platform-section:nth-child(4) { animation-delay: 0.15s; }
+
+  .platform-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .platform-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .platform-icon svg { width: 22px; height: 22px; }
+  .icon-wa   { background: #E8FBF0; }
+  .icon-meta { background: #EBF2FF; }
+  .icon-ig   { background: #FCEEF3; }
+
+  .platform-header-text h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .platform-header-text p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .platform-badge {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+
+  .badge-wa   { color: var(--wa-dark); border-color: rgba(37,211,102,0.35); background: rgba(37,211,102,0.06); }
+  .badge-meta { color: var(--meta-dark); border-color: rgba(8,102,255,0.3); background: rgba(8,102,255,0.05); }
+  .badge-ig   { color: var(--ig-dark); border-color: rgba(225,48,108,0.3); background: rgba(225,48,108,0.05); }
+
+  .platform-body {
+    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 560px) {
+    .platform-body { grid-template-columns: 1fr; }
+    .what-we-do { grid-template-columns: 1fr; }
+    .nav-bar { overflow-x: auto; justify-content: flex-start; }
+    .about-card { padding: 1.5rem; }
+    .platform-header { padding: 1.25rem 1.5rem; }
+    .platform-body { padding: 1.5rem; }
+  }
+
+  .use-block h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .use-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .use-list li {
+    font-size: 0.84rem;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .dot-wa   { background: var(--wa); }
+  .dot-meta { background: var(--meta); }
+  .dot-ig   { background: var(--ig); }
+
+  .notice-strip {
+    margin: 0 2rem 1.75rem;
+    padding: 0.9rem 1.1rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .notice-wa   { background: rgba(37,211,102,0.07); border: 1px solid rgba(37,211,102,0.2); color: #0a5e2a; }
+  .notice-meta { background: rgba(8,102,255,0.06); border: 1px solid rgba(8,102,255,0.18); color: #0339a6; }
+  .notice-ig   { background: rgba(225,48,108,0.06); border: 1px solid rgba(225,48,108,0.18); color: #8f1040; }
+
+  .notice-strip span { font-size: 1rem; flex-shrink: 0; }
+
+  /* ── Shared policy card ── */
+  .policy-card {
+    background: linear-gradient(140deg, var(--accent) 0%, var(--accent-dark) 100%);
+    color: #fff;
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+
+  .policy-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .policy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 560px) { .policy-grid { grid-template-columns: 1fr; } .policy-card { padding: 1.5rem; } }
+
+  .policy-item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  .policy-item strong {
+    display: block;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    font-size: 0.8rem;
+  }
+
+  /* ── Contact / Footer ── */
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.5s 0.25s ease both;
+  }
+
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  }
+
+  .contact-btn:hover { background: var(--bg); border-color: var(--brand-gold); transform: translateY(-1px); }
+  .contact-btn svg { width: 14px; height: 14px; }
+
+  footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  footer a { color: var(--accent); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="top">
-      <h1>BU Today Agency</h1>
-      <div>Nelson Mandela Bay • South Africa</div>
+
+<header>
+  <div class="header-inner">
+    <div class="agency-label">Messaging Compliance Policy</div>
+    <h1>BU Today Agency <span>/ Compliance</span></h1>
+    <p class="header-sub">Nelson Mandela Bay · South Africa · Managed inbox &amp; customer communication</p>
+    <div class="platform-pills">
+      <span class="pill pill-wa">
+        <!-- WhatsApp icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </span>
+      <span class="pill pill-meta">
+        <!-- Messenger icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/></svg>
+        Meta Messenger
+      </span>
+      <span class="pill pill-ig">
+        <!-- Instagram icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Instagram DM
+      </span>
     </div>
-
-    <h2>Managed inbox support and customer communication</h2>
-    <p>
-      BU Today Agency helps businesses manage customer enquiries, WhatsApp communication,
-      and social inboxes more effectively — without complexity or disruption.
-    </p>
-
-    <div class="cta">
-      <a class="btn primary" href="mailto:believersutopia@gmail.com">Email us</a>
-      <a class="btn" href="tel:+27659325628">Call</a>
-      <a class="btn" href="https://wa.me/27659325628" target="_blank">WhatsApp</a>
-      <a class="btn" href="/privacy.html">Privacy Policy</a>
-    </div>
-
-    <div class="card">
-      <h3>What we do</h3>
-      <ul>
-        <li>Respond to customer enquiries reliably</li>
-        <li>Avoid missed messages</li>
-        <li>Reduce manual follow-ups</li>
-        <li>Maintain a respectful customer experience</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>How we use WhatsApp</h3>
-      <ul>
-        <li>Respond to customer enquiries</li>
-        <li>Send service-related notifications</li>
-        <li>Provide customer support and updates</li>
-      </ul>
-      <p style="margin-top:10px">
-        Messages are only sent to users who have contacted the business or explicitly opted in.
-        We do not send spam or unsolicited messages.
-      </p>
-    </div>
-
-    <footer>
-      <div>© BU Today Agency</div>
-      <div><a href="/privacy.html">Privacy Policy</a></div>
-    </footer>
   </div>
+</header>
+
+<nav class="nav-bar">
+  <a href="#about">About</a>
+  <a href="#whatsapp" class="wa">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+  <a href="#messenger" class="meta">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/></svg>
+    Messenger
+  </a>
+  <a href="#instagram" class="ig">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    Instagram
+  </a>
+  <a href="#policy">Policy</a>
+</nav>
+
+<main>
+
+  <!-- About -->
+  <div id="about" class="about-card">
+    <h2>About BU Today Agency</h2>
+    <p>BU Today Agency helps businesses manage customer enquiries, messaging communication, and social inboxes more effectively — without complexity or disruption. Based in Nelson Mandela Bay, South Africa, we operate across WhatsApp, Meta Messenger, and Instagram Direct on behalf of the businesses we serve.</p>
+    <div class="what-we-do">
+      <div class="do-item">Respond to customer enquiries reliably</div>
+      <div class="do-item">Avoid missed messages across all channels</div>
+      <div class="do-item">Reduce manual follow-ups</div>
+      <div class="do-item">Maintain a respectful customer experience</div>
+      <div class="do-item">Manage social inboxes professionally</div>
+      <div class="do-item">Provide timely support and updates</div>
+    </div>
+  </div>
+
+  <!-- WhatsApp -->
+  <div class="section-label" id="whatsapp">WhatsApp</div>
+
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon icon-wa">
+        <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div class="platform-header-text">
+        <h3>WhatsApp Business</h3>
+        <p>Customer support &amp; service notifications via WhatsApp</p>
+      </div>
+      <span class="platform-badge badge-wa">Meta Compliant</span>
+    </div>
+    <div class="platform-body">
+      <div class="use-block">
+        <h4>How we use it</h4>
+        <ul class="use-list">
+          <li><span class="dot dot-wa"></span>Respond to inbound customer enquiries</li>
+          <li><span class="dot dot-wa"></span>Send service-related notifications</li>
+          <li><span class="dot dot-wa"></span>Provide customer support and updates</li>
+          <li><span class="dot dot-wa"></span>Share order or appointment confirmations</li>
+        </ul>
+      </div>
+      <div class="use-block">
+        <h4>What we don't do</h4>
+        <ul class="use-list">
+          <li><span class="dot dot-wa"></span>Send unsolicited or spam messages</li>
+          <li><span class="dot dot-wa"></span>Contact users who have not reached out first</li>
+          <li><span class="dot dot-wa"></span>Share personal data with third parties</li>
+          <li><span class="dot dot-wa"></span>Send promotional messages without opt-in</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notice-strip notice-wa">
+      <span>✅</span>
+      Messages are only sent to users who have contacted the business first or have explicitly opted in. All communications comply with the WhatsApp Business Policy and Meta's Messaging guidelines.
+    </div>
+  </div>
+
+  <!-- Meta Messenger -->
+  <div class="section-label" id="messenger">Meta Messenger</div>
+
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon icon-meta">
+        <svg viewBox="0 0 24 24" fill="#0866FF"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.652V24l4.088-2.242c1.092.3 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/></svg>
+      </div>
+      <div class="platform-header-text">
+        <h3>Meta Messenger</h3>
+        <p>Facebook Page inbox management &amp; customer conversations</p>
+      </div>
+      <span class="platform-badge badge-meta">Meta Compliant</span>
+    </div>
+    <div class="platform-body">
+      <div class="use-block">
+        <h4>How we use it</h4>
+        <ul class="use-list">
+          <li><span class="dot dot-meta"></span>Manage and respond to Facebook Page messages</li>
+          <li><span class="dot dot-meta"></span>Answer product and service enquiries</li>
+          <li><span class="dot dot-meta"></span>Follow up on customer requests within the 24-hour window</li>
+          <li><span class="dot dot-meta"></span>Send post-purchase support messages</li>
+        </ul>
+      </div>
+      <div class="use-block">
+        <h4>What we don't do</h4>
+        <ul class="use-list">
+          <li><span class="dot dot-meta"></span>Send messages outside Meta's 24-hour rule without a tag</li>
+          <li><span class="dot dot-meta"></span>Use subscriber broadcasting for promotional content without consent</li>
+          <li><span class="dot dot-meta"></span>Collect or store personal data beyond what's needed</li>
+          <li><span class="dot dot-meta"></span>Send any spam or misleading content</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notice-strip notice-meta">
+      <span>🔵</span>
+      All Messenger interactions are initiated by the user or fall within Meta's permitted message tags. We operate strictly within the Messenger Platform Policy, including the Standard Messaging and human agent guidelines.
+    </div>
+  </div>
+
+  <!-- Instagram -->
+  <div class="section-label" id="instagram">Instagram</div>
+
+  <div class="platform-section">
+    <div class="platform-header">
+      <div class="platform-icon icon-ig">
+        <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </div>
+      <div class="platform-header-text">
+        <h3>Instagram Direct</h3>
+        <p>DM inbox management &amp; social customer care</p>
+      </div>
+      <span class="platform-badge badge-ig">Meta Compliant</span>
+    </div>
+    <div class="platform-body">
+      <div class="use-block">
+        <h4>How we use it</h4>
+        <ul class="use-list">
+          <li><span class="dot dot-ig"></span>Respond to Instagram Direct Messages from followers</li>
+          <li><span class="dot dot-ig"></span>Answer enquiries from story replies and comments</li>
+          <li><span class="dot dot-ig"></span>Provide customer support and order-related information</li>
+          <li><span class="dot dot-ig"></span>Engage with users who initiate contact</li>
+        </ul>
+      </div>
+      <div class="use-block">
+        <h4>What we don't do</h4>
+        <ul class="use-list">
+          <li><span class="dot dot-ig"></span>Send cold DMs or unsolicited promotions</li>
+          <li><span class="dot dot-ig"></span>Scrape or use profile data for targeting</li>
+          <li><span class="dot dot-ig"></span>Automate spammy follow-up sequences</li>
+          <li><span class="dot dot-ig"></span>Violate Instagram's Community Guidelines</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notice-strip notice-ig">
+      <span>📸</span>
+      All Instagram DM interactions are user-initiated or respond directly to a user action (story reply, comment, or mention). We comply with the Instagram Platform Policy and Meta's messaging standards for business accounts.
+    </div>
+  </div>
+
+  <!-- Shared policy -->
+  <div class="section-label" id="policy">Shared Policy</div>
+
+  <div class="policy-card">
+    <h3>Our Commitment Across All Platforms</h3>
+    <div class="policy-grid">
+      <div class="policy-item">
+        <strong>Opt-in &amp; Consent</strong>
+        We only message users who have contacted us first or have explicitly agreed to receive communications from us.
+      </div>
+      <div class="policy-item">
+        <strong>No Spam</strong>
+        We do not send unsolicited, bulk, or irrelevant messages on any platform. Every message has a clear service purpose.
+      </div>
+      <div class="policy-item">
+        <strong>Data Protection</strong>
+        Personal information shared through any messaging channel is used solely to respond to the enquiry and is not sold or shared with third parties.
+      </div>
+      <div class="policy-item">
+        <strong>Easy Opt-out</strong>
+        Any user can stop receiving messages from us at any time by simply requesting it in the conversation. We will honour all opt-out requests promptly.
+      </div>
+      <div class="policy-item">
+        <strong>Platform Compliance</strong>
+        All messaging activity follows Meta's Business Messaging Policy, WhatsApp Business Policy, and Instagram Platform Policy.
+      </div>
+      <div class="policy-item">
+        <strong>Human Oversight</strong>
+        Automated responses, where used, are always backed by human review. We do not deploy fully autonomous bots without disclosure.
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="section-label">Contact Us</div>
+  <div class="contact-row">
+    <a class="contact-btn" href="mailto:believersutopia@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      believersutopia@gmail.com
+    </a>
+    <a class="contact-btn" href="tel:+27659325628">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.05 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      +27 65 932 5628
+    </a>
+    <a class="contact-btn" href="https://wa.me/27659325628" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="color:#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp Us
+    </a>
+    <a class="contact-btn" href="/privacy.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Privacy Policy
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 BU Today Agency · Nelson Mandela Bay, South Africa</p>
+  <p style="margin-top:0.4rem"><a href="/privacy.html">Privacy Policy</a> · Compliant with Meta Messaging Policies</p>
+</footer>
+
 </body>
 </html>
